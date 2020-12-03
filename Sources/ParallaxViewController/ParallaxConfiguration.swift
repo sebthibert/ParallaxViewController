@@ -2,25 +2,32 @@ import UIKit
 
 @available(iOS 13.0, *)
 public enum ParallaxImageConfiguration {
-  case name(String?)
-  case data(Data?)
-  case literal(UIImage?)
+  case name(String?, CGFloat)
+  case data(Data?, CGFloat)
+  case literal(UIImage?, CGFloat)
 
   var image: UIImage? {
     var image: UIImage? = nil
     switch self {
-    case .name(let name):
+    case .name(let name, _):
       if let name = name {
         image = UIImage(named: name)
       }
-    case .data(let data):
+    case .data(let data, _):
       if let data = data {
         image = UIImage(data: data)
       }
-    case .literal(let literalImage):
+    case .literal(let literalImage, _):
       image = literalImage
     }
     return image
+  }
+
+  var aspectRatio: CGFloat {
+    switch self {
+    case .name(_, let aspectRatio), .data(_, let aspectRatio), .literal(_, let aspectRatio):
+      return aspectRatio
+    }
   }
 
   var shouldShowImageContainer: Bool {

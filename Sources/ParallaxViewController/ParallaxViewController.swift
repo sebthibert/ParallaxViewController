@@ -88,7 +88,7 @@ public class ParallaxViewController: UIViewController, UIScrollViewDelegate {
     let navigationBarHeight = navigationController?.navigationBar.frame.height ?? 0
     let statusBarHeight = view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
     let topBarHeight = navigationBarHeight + statusBarHeight
-    let imageContainerHeight = (width / (3840 / 2160)) - topBarHeight
+    let imageContainerHeight = (width / configuration.imageConfiguration.aspectRatio) - topBarHeight
     let headerHeight = imageContainerHeight - scrollView.contentOffset.y
     if scrollView.contentOffset.y < 0.0 {
       parallaxView?.imageContainerHeightConstraint?.constant = headerHeight
