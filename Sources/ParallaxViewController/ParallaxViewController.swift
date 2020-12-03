@@ -1,7 +1,7 @@
 import UIKit
 
 @available(iOS 13.0, *)
-class ParallaxViewController: UIViewController, UIScrollViewDelegate {
+public class ParallaxViewController: UIViewController, UIScrollViewDelegate {
   private let configuration: ParallaxConfiguration
   var parallaxView: ParallaxView!
   var previousNavigationBarHidden = false
@@ -17,7 +17,7 @@ class ParallaxViewController: UIViewController, UIScrollViewDelegate {
     fatalError("init(coder:) has not been implemented")
   }
 
-  override func viewDidLoad() {
+  public override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .systemBackground
     parallaxView.scrollView.imageContainer.imageView.image = configuration.imageConfiguration.image
@@ -31,7 +31,7 @@ class ParallaxViewController: UIViewController, UIScrollViewDelegate {
     configuration.arrangedSubviews.forEach { parallaxView.scrollView.stackView.addArrangedSubview($0) }
   }
 
-  override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+  public override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
     super.viewWillTransition(to: size, with: coordinator)
     coordinator.animate(alongsideTransition: nil) { [weak self] _ in
       self?.setNavigationBar()
@@ -39,13 +39,13 @@ class ParallaxViewController: UIViewController, UIScrollViewDelegate {
     layoutHeaderView(width: size.width, scrollView: parallaxView.scrollView)
   }
 
-  override func viewWillAppear(_ animated: Bool) {
+  public override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     setNavigationBar()
     previousStackViewMinY = nil
   }
 
-  override func viewWillDisappear(_ animated: Bool) {
+  public override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
     navigationController?.navigationBar.tintColor = .label
     navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
@@ -53,7 +53,7 @@ class ParallaxViewController: UIViewController, UIScrollViewDelegate {
     previousStackViewMinY = parallaxView.stackViewMinY
   }
 
-  override var preferredStatusBarStyle: UIStatusBarStyle {
+  public override var preferredStatusBarStyle: UIStatusBarStyle {
     let shouldShowLightContent = traitCollection.userInterfaceStyle == .dark ? true : !shouldShowNavigationBar
     return shouldShowLightContent ? .lightContent : .darkContent
   }
@@ -106,7 +106,7 @@ class ParallaxViewController: UIViewController, UIScrollViewDelegate {
 
   // MARK: - UIScrollViewDelegate
 
-  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+  public func scrollViewDidScroll(_ scrollView: UIScrollView) {
     layoutHeaderView(width: view.frame.width, scrollView: scrollView)
   }
 }

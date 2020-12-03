@@ -1,7 +1,7 @@
 import UIKit
 
 @available(iOS 13.0, *)
-enum ParallaxImageConfiguration {
+public enum ParallaxImageConfiguration {
   case name(String?)
   case data(Data?)
   case literal(UIImage?)
@@ -29,7 +29,7 @@ enum ParallaxImageConfiguration {
 }
 
 @available(iOS 13.0, *)
-struct ParallaxConfiguration {
+public struct ParallaxConfiguration {
   let title: String?
   let imageConfiguration: ParallaxImageConfiguration
   let arrangedSubviews: [UIView]
