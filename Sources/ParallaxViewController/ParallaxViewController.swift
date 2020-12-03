@@ -7,7 +7,7 @@ public class ParallaxViewController: UIViewController, UIScrollViewDelegate {
   var previousNavigationBarHidden = false
   var previousStackViewMinY: CGFloat?
 
-  init(configuration: ParallaxConfiguration) {
+  public init(configuration: ParallaxConfiguration) {
     self.configuration = configuration
     super.init(nibName: nil, bundle: nil)
     parallaxView = ParallaxView(shouldShowImageContainer: configuration.imageConfiguration.shouldShowImageContainer, scrollViewDelegate: self, imageViewDelegate: nil)

@@ -34,7 +34,7 @@ public struct ParallaxConfiguration {
   let imageConfiguration: ParallaxImageConfiguration
   let arrangedSubviews: [UIView]
 
-  init(title: String? = nil, imageConfiguration: ParallaxImageConfiguration, arrangedSubviews: [UIView] = []) {
+  public init(title: String? = nil, imageConfiguration: ParallaxImageConfiguration, arrangedSubviews: [UIView] = []) {
     self.title = title
     self.imageConfiguration = imageConfiguration
     self.arrangedSubviews = arrangedSubviews
